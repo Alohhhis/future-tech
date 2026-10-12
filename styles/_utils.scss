@@ -1,4 +1,4 @@
-@use "helpers" as *;
+@use 'helpers' as *;
 
 .container {
   max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
@@ -12,14 +12,12 @@
 
 .hidden-mobile {
   @include mobile {
-    display: none;
-  !important;
+    display: none !important;
   }
 }
 
 .visible-mobile {
   @include mobile-above {
-    display: none;
-  !important;
+    display: none !important;
   }
 }
