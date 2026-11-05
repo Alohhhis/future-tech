@@ -1,16 +1,16 @@
-@use "../helpers" as *;
+@use '../helpers' as *;
 
 .header {
   position: sticky;
-  top: 0;
   z-index: 100;
+  top: 0;
   animation-name: scrolling-header;
   animation-fill-mode: both;
   animation-timeline: scroll();
   animation-range: rem(100) rem(200);
 
   @keyframes scrolling-header {
-    to{
+    to {
       box-shadow: 0 0 1rem 0 var(--color-dark-40);
     }
   }
@@ -21,9 +21,20 @@
     background-color: var(--color-dark);
     border-bottom: var(--border);
 
-    @include mobile{
-      padding-top: rem(40);
-      padding-bottom: rem(14);
+    @include mobile {
+      padding-block: rem(14);
+    }
+
+    @include mobile-s {
+      font-size: rem(12);
+    }
+
+    &-link {
+      .icon {
+        @include mobile-s {
+          column-gap: rem(5);
+        }
+      }
     }
   }
 
@@ -31,11 +42,11 @@
     padding-block: rem(24);
     background-color: var(--color-dark-10);
 
-    @include mobile{
+    @include mobile {
       padding-block: rem(20);
     }
 
-    &-inner{
+    &-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -43,8 +54,12 @@
     }
   }
 
-  &__overlay{
-    @include mobile{
+  &__overlay {
+    @include mobile-above {
+      display: contents;
+    }
+
+    @include mobile {
       position: fixed;
       inset: 0;
       display: flex;
@@ -55,48 +70,43 @@
       background-color: var(--color-dark-10);
       transition-duration: var(--transition-duration);
 
-      &:not(.is-active){
+      &:not(.is-active) {
         @include hide;
 
         translate: 100%;
       }
     }
-
-    @include mobile-above{
-      display: contents;
-    }
   }
 
-  &__menu{
-
-    @include mobile{
+  &__menu {
+    @include mobile {
       overflow-y: auto;
     }
 
-    &-list{
+    &-list {
       display: flex;
       align-items: center;
       column-gap: rem(16);
 
-      @include laptop{
+      @include laptop {
         column-gap: rem(6);
       }
 
-      @include mobile{
+      @include mobile {
         flex-direction: column;
-        row-gap: rem(3);
+        row-gap: 1rem;
       }
     }
 
-    &-link{
+    &-link {
       padding: rem(14) rem(24);
       color: var(--color-gray-50);
 
-      @include laptop{
+      @include laptop {
         padding: rem(10) rem(18);
       }
 
-      &.is-active{
+      &.is-active {
         color: var(--color-light);
         font-weight: 500;
         background-color: var(--color-dark);
@@ -107,8 +117,8 @@
     }
   }
 
-  &__contact-us-link{
-    @include mobile{
+  &__contact-us-link {
+    @include mobile {
       width: 100%;
       max-width: rem(300);
       align-self: center;
